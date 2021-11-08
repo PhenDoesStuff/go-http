@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 )
@@ -13,8 +14,5 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Make is a built in function that takes type slice & number of elements the slice will take
-	bs := make([] byte, 99999) // bs will be passed off to the Read function within GET
-	resp.Body.Read(bs)
-	fmt.Println(string(bs))
+	io.Copy(os.Stdout, resp.Body)
 }
