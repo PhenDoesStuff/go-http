@@ -13,5 +13,8 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Println(resp)
+	// Make is a built in function that takes type slice & number of elements the slice will take
+	bs := make([] byte, 99999) // bs will be passed off to the Read function within GET
+	resp.Body.Read(bs)
+	fmt.Println(string(bs))
 }
